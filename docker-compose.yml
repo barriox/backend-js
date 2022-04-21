@@ -5,9 +5,14 @@ services:
     image: mongo
     restart: always
     environment:
+      #estas 2 lineas irian en un .env desde el que se leerian y
+      #el .env iria incluido en el .gitignore para no subir las
+      #contraseñas a github
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: Cervezas
     ports:
       - 15001:27017
     volumes:
       - ./mongo-db:/data/db
+      - ./init-db:/docker-entrypoint-initdb.d
