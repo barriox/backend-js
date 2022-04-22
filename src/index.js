@@ -41,9 +41,9 @@ app.get("/bancos", function (req, res) {
   res.send("Aqui deberian salir los bancos");
 });
 
-/*app.listen(3000, function () {
+app.listen(3000, function () {
   console.log("Example app listening on port 3000!");
-});*/
+});
 
 app.use((req, res, next) => {
   next(); //para ir al siguiente middleware o a la ruta
@@ -71,3 +71,8 @@ miCerveza.save((err, miCerveza) => {
   console.log(`Guardada en bbdd ${miCerveza.nombre}`);
 });
 */
+const port = 3000;
+if (!module.parent) {
+  app.listen(port, () => console.log(`API escuchando en el puerto ${port}`));
+}
+module.exports = app;
